@@ -7,29 +7,16 @@ Star Wars API
 ● Homepage ★ https://swapi.dev/api/
 ● Documentation ★ https://swapi.dev/documentation
 Learn about the People, Films, Species, Starships, Vehicles and Planets from Star Wars
+'films': 'https://swapi.dev/api/films/'
+'people': 'https://swapi.dev/api/people/'
+'planets': 'https://swapi.dev/api/planets/'
+'species': 'https://swapi.dev/api/species/'
+'starships': 'https://swapi.dev/api/starships/'
+'vehicles': 'https://swapi.dev/api/vehicles/'
 """
-"""
-{'films': 'https://swapi.dev/api/films/',
- 'people': 'https://swapi.dev/api/people/',
- 'planets': 'https://swapi.dev/api/planets/',
- 'species': 'https://swapi.dev/api/species/',
- 'starships': 'https://swapi.dev/api/starships/',
- 'vehicles': 'https://swapi.dev/api/vehicles/'}
-"""
-"""
-# Ask the user which star wars character they would like to learn about
-# There are 82 people in this database
-character_numbers = []
-for x in range(2):
-    character_number = int(input("What is the Character's ID? (1 - 83)"))
-    if(character_number > 0 and character_number < 84 and character_number != 17):
-        character_numbers.append(character_number)
-    else:
-        print("Character's ID must be between 1 and 83 (but not 17)")
 
-"""
 # Create a function which gets a dictionary for the character id given
-# We should be able to get the following simple data:
+# We should be able to get the data, like this example:
 #     "name": "Luke Skywalker",
 #     "height": "172",
 #     "mass": "77",
@@ -41,6 +28,8 @@ for x in range(2):
 #     "homeworld" - would need to interrogate the planets API
 #     "species"- would need to interrogate the species API
 #     "films"[] - don't need to ask which ones, just get the length - the more films they have been in, they win the round
+
+
 def get_character_stats(character_number):
     # Set the path to our Star wars API (Application Programming Interface) which will respond to our information requests
     url = 'http://swapi.dev/api/people/{}'.format(character_number) # Unfortunately swapi.co is not maintained anymore
@@ -66,7 +55,7 @@ def get_character_stats(character_number):
         "films": len(my_character['films'])
     }
     # Help with the maths for comparisions
-    # Contents must be integers
+    # Contents must be numbers
     if character_card["height"] == "unknown":
         character_card["height"] = -1
     else:
